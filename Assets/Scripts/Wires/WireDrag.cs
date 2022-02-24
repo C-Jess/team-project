@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-public class Dragable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class WireDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private UILineRenderer line;

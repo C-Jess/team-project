@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class WireConnectionPoint : MonoBehaviour, IDropHandler
+public class WireConnection : MonoBehaviour, IDropHandler
 {
     [SerializeField] private GameObject wire;
     
@@ -20,7 +20,7 @@ public class WireConnectionPoint : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log($"Drop {eventData.pointerDrag.name}");
+        //Debug.Log($"Dropped \"{eventData.pointerDrag.name}\"");
         if (eventData.pointerDrag == wire)
         {
             onDropEvent.Invoke(rectTransform.position);
