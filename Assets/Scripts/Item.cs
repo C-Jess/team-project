@@ -1,12 +1,20 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class Item : ScriptableObject
+public class Item : MonoBehaviour
 {
-    private string itemName {get; set;}
-    private string itemDescription {get; set;}
-    public int ID {get; set;}
+    public ItemObject item;
+    public Inventory inventory;
 
-    List<Item> Items = new List<Item>();
+    private void OnMouseDown() 
+    {
+        inventory.AddItem(item);
+        Destroy(this.gameObject);
+    }
 
+    private void OnApplicationQuit() 
+    {
+        inventory.ItemList.Clear();
+    }
 }
