@@ -51,4 +51,10 @@ public class UILineRenderer : Graphic
         points[1] = position;
         SetVerticesDirty();
     }
+
+    public void ChangeStartPoint(Vector2 position)
+    {
+        points[0] = position;
+        SetVerticesDirty();
+    }
 }
