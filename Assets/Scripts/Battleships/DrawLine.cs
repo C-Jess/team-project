@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class DrawLine : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class DrawLine : MonoBehaviour
 
     private Vector2 startPoint;
     private Vector2 endPoint;
+
+    public UnityEvent<float, float> onLineCalculated;
 
     public void CalculatePoints()
     {
@@ -51,6 +55,8 @@ public class DrawLine : MonoBehaviour
         // Update line
         line.ChangeStartPoint(startPoint);
         line.ChangeEndPoint(endPoint);
+
+        onLineCalculated.Invoke(m, c);
     }
 
     public void GetMInput(string InputM)
