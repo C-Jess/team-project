@@ -9,6 +9,7 @@ public class UIUpdater : MonoBehaviour
     public TMP_Text itemDescription;
 
     // Start is called before the first frame update
+    // Add listener for item inspect event.
     void Start()
     {
         ItemInspector.inspectionItem.AddListener(UpdateUI);
@@ -20,6 +21,7 @@ public class UIUpdater : MonoBehaviour
         
     }
 
+    // Get ItemObject name and description attributes, assign to inspection UI elements.
     public void UpdateUI(ItemObject item)
     {
         itemName.text = item.name;

@@ -7,19 +7,23 @@ using UnityEngine.Events;
 
 public class ItemInspector : ScriptableObject
 {
+    // Create inspection events.
     public static UnityEvent<bool> inspectionEvent =  new UnityEvent<bool>();
     public static UnityEvent<ItemObject> inspectionItem = new UnityEvent<ItemObject>();
 
     public static bool isActive;
 
+    // Inspection method - called on click event. 
     public void Inspect(ItemObject item)
     {
         Debug.Log($"Inspected {item.name}.");
         
+        // Check boolean value for whether the item is able to be added to the player's inventory.
         if (item.isInventoryItem)
         {
-            Debug.Log($"Opening inspection UI for {item.name}...");
-
+            Debug.Log($"Displaying inspection UI for {item.name}...");
+            
+            // Toggle active state, invoke inspection events.
             isActive = !isActive;
             inspectionEvent.Invoke(isActive);
             inspectionItem.Invoke(item);
