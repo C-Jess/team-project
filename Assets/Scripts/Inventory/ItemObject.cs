@@ -16,4 +16,5 @@ public class ItemObject : ScriptableObject
     public Sprite sprite;
     [TextArea(10,15)]
     public string description;
+    public bool isInventoryItem;
 }
