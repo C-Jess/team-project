@@ -15,9 +15,17 @@ public class UILineRenderer : Graphic
 
         if (points.Count < 2) return;
 
-        foreach (Vector2 i in points)
+        float angle = 0;
+        for (int i = 0; i < points.Count; i++)
         {
-            AddVerticeForPoints(i, vh);
+            if (i < points.Count - 1)
+            {
+                // Distance Vector
+                Vector2 v = points[i + 1] - points[i];
+                // Angle from one point to another + offset
+                angle = Mathf.Atan2(v.y, v.x) + Mathf.PI/4;
+            }
+            AddVerticeForPoints(points[i], angle, vh);
         }
 
         for (int i = 0; i < points.Count - 1; i++)
@@ -28,21 +36,32 @@ public class UILineRenderer : Graphic
         }
     }
 
-    void AddVerticeForPoints(Vector2 point, VertexHelper vh)
+    void AddVerticeForPoints(Vector2 point, float angle, VertexHelper vh)
     {
         UIVertex vertex = UIVertex.simpleVert;
         vertex.color = color;
 
+        // KJ: Could make this a matrix but is probably faster to do in 2D
+
+        float radius = (thinkness / 2);
+        float posX = (Mathf.Cos(angle) - Mathf.Sin(angle)) * radius;
+        float posY = (Mathf.Sin(angle) + Mathf.Cos(angle)) * radius;
+        float offsetX = rectTransform.rect.center.x + point.x;
+        float offsetY = rectTransform.rect.center.y + point.y;
+        
+        // Get rotated point along an axis, move out by radius, and then add offset.
         vertex.position = new Vector3(
-            rectTransform.rect.center.x + point.x,
-            rectTransform.rect.center.y + point.y + (thinkness/2)
-            );
+            posX + offsetX,
+            posY + offsetY
+        );
+
         vh.AddVert(vertex);
 
         vertex.position = new Vector3(
-            rectTransform.rect.center.x + point.x,
-            rectTransform.rect.center.y + point.y - (thinkness/2)
-            );
+            (posX * -1) + offsetX,
+            (posY * -1) + offsetY
+        );
+
         vh.AddVert(vertex);
     }
 
@@ -51,8 +70,7 @@ public class UILineRenderer : Graphic
         points[1] = position;
         SetVerticesDirty();
     }
-
-    public void ChangeStartPoint(Vector2 position)
+	public void ChangeStartPoint(Vector2 position)
     {
         points[0] = position;
         SetVerticesDirty();
