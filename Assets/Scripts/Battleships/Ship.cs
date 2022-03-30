@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class Ship : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class Ship : MonoBehaviour
     private int height;
     private bool vertical = false;
     private bool horizontal = false;
+    private bool hit = false;
+
+    public UnityEvent onHit;
 
     void Start()
     {
@@ -22,17 +27,31 @@ public class Ship : MonoBehaviour
         horizontal = (height == 1);
         vertical = (width == 1);
         Debug.Log(gameObject.name + "- horizontal: " + horizontal + ", vertical: " + vertical);
+
     }
 
     public void CheckHit(float m, float c)
     {
         var image = GetComponent<Image>();
-        image.color = Color.grey;
+        // reset: hit = false;
 
         if (CheckIntercept(m, c))
         {
+            if(!hit)
+            {
+                onHit.Invoke();
+            }
+            hit = true;
             Debug.Log(gameObject.name + "has been hit");
+        }
+
+        if (hit)
+        {
             image.color = Color.yellow;
+        }
+        else
+        {
+            image.color = Color.grey;
         }
     }
 
@@ -50,22 +69,20 @@ public class Ship : MonoBehaviour
         float topIntercept = (top - c) / m;
         float bottomIntercept = (bottom - c) / m;
 
-        if ((leftIntercept > bottom) && (leftIntercept < top))
+        if ((leftIntercept > bottom) && (leftIntercept <= top))
         {
             return true;
         }
-        else if ((rightIntercept > bottom) && (rightIntercept < top))
+        else if ((rightIntercept >= bottom) && (rightIntercept < top))
         {
             return true;
         }
-        else if ((m != 0) && (topIntercept > left) && (topIntercept < right))
+        else if ((m != 0) && (topIntercept > left) && (topIntercept <= right))
         {
-            Debug.Log(m);
             return true;
         }
-        else if ((m != 0) && (bottomIntercept > left) && (bottomIntercept < right))
+        else if ((m != 0) && (bottomIntercept >= left) && (bottomIntercept < right))
         {
-            Debug.Log(m);
             return true;
         }
         else
