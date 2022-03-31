@@ -27,6 +27,8 @@ public class ItemInspector : ScriptableObject
             isActive = !isActive;
             inspectionEvent.Invoke(isActive);
             inspectionItem.Invoke(item);
+
+            
         }
         else
         {
