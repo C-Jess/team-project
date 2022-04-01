@@ -11,17 +11,21 @@ public class InspectRotate : MonoBehaviour
     {
         // TODO: Rotate object on world co-rds instead of local.
         // Rotate object to look at camera.
-        if (Input.GetMouseButton(0))
-        {
-            // Smoothly tilts a transform towards a target rotation.
-            float tiltZ = Input.GetAxis("Horizontal") * tiltAngle;
-            float tiltX = Input.GetAxis("Vertical") * tiltAngle;
+        
+        // KJ: Got rid of on mouse down for now...
+        //if (Input.GetMouseButton(0))
+        //{
+        
+        // Smoothly tilts a transform towards a target rotation.
+        float tiltY = Input.GetAxis("Horizontal") * tiltAngle * -1;
+        float tiltX = Input.GetAxis("Vertical") * tiltAngle;
 
-            // Rotate the cube by converting the angles into a quaternion.
-            Quaternion target = Quaternion.Euler(tiltX, 0, tiltZ);
+        // Rotate the cube by converting the angles into a quaternion.
+        Quaternion target = Quaternion.Euler(tiltX, tiltY, 0);
 
-            // Dampen towards the target rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, target,  Time.deltaTime * smooth);
-        }
+        // Dampen towards the target rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, target,  Time.deltaTime * smooth);
+        
+        //}
     }
 }

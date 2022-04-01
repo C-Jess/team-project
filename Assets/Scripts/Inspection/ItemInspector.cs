@@ -27,12 +27,16 @@ public class ItemInspector : ScriptableObject
             isActive = !isActive;
             inspectionEvent.Invoke(isActive);
             inspectionItem.Invoke(item);
-
-            
         }
         else
         {
             Debug.Log($"{item.name} is not an inspectable item.");
         }
+    }
+
+    public void Close()
+    {
+        isActive = false;
+        inspectionEvent.Invoke(isActive);
     }
 }

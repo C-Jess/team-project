@@ -9,11 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba8a0d59a34571468565ebe8ce551cd, type: 3}
-  m_Name: Electrical Box
+  m_Script: {fileID: 11500000, guid: f2cd5f8955692a940b146af21c0337b0, type: 3}
+  m_Name: Basement Flags
   m_EditorClassIdentifier: 
-  type: 0
-  model: {fileID: 919132149155446097, guid: 9c83893a6951f954d8133f27caf3e101, type: 3}
-  sprite: {fileID: 0}
-  description: 
-  isInventoryItem: 0
+  onFlagChange:
+    m_PersistentCalls:
+      m_Calls: []
+  Flags:
+  - flag: Combo Lock
+    state: 0
+  - flag: Wires
+    state: 0
+  - flag: Battleships
+    state: 0

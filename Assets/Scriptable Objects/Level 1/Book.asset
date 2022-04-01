@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba8a0d59a34571468565ebe8ce551cd, type: 3}
   m_Name: Book
   m_EditorClassIdentifier: 
-  type: 0
-  model: {fileID: 919132149155446097, guid: 6b24a758e2cfe8f498d6db0d78d93fae, type: 3}
+  type: 1
+  prefab: {fileID: 5197543116812314185, guid: 0faa943fbda8f5847bf148d09634c71b, type: 3}
   sprite: {fileID: 0}
   description: An old book. Maybe it holds information which could be useful...
   isInventoryItem: 1

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eba8a0d59a34571468565ebe8ce551cd, type: 3}
-  m_Name: Arcade Machine
+  m_Name: Lock
   m_EditorClassIdentifier: 
-  type: 0
-  model: {fileID: 919132149155446097, guid: 5010f0ba5e262e04ab6d271bb23d2445, type: 3}
+  type: 2
+  prefab: {fileID: 4519919054315359127, guid: 2973e8e5c6aed164f8730c170c468272, type: 3}
   sprite: {fileID: 0}
-  description: A old arcade machine.
-  isInventoryItem: 0
+  description: A combination lock. You require 3 numbers to unlock it.
+  isInventoryItem: 1

@@ -8,6 +8,7 @@ public class WireDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private UILineRenderer line;
+    [SerializeField] private float adjustment = 0;
 
     RectTransform rectTransform;
     CanvasGroup canvasGroup;
@@ -28,7 +29,8 @@ public class WireDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        //TODO: FIX THIS "adjustment" i a quick fix to get the demo ready -KJ
+        rectTransform.anchoredPosition += eventData.delta / (canvas.scaleFactor + adjustment);
         line.ChangeEndPoint(rectTransform.anchoredPosition);
     }
 

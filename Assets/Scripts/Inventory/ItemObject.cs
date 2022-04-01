@@ -12,9 +12,27 @@ public enum ItemType
 public class ItemObject : ScriptableObject
 {
     public ItemType type;
-    public GameObject model;
+    public GameObject prefab;
     public Sprite sprite;
     [TextArea(10,15)]
     public string description;
     public bool isInventoryItem;
+
+    [Header("Extra")]
+    public LevelFlags levelFlags;
+    public string flagToCheck;
+    public string ifTrue;
+    public string ifFalse;
+
+    public string FullDescription()
+    {
+        if (levelFlags == null || string.IsNullOrEmpty(flagToCheck))
+        {
+            return description;
+        }
+        else
+        {
+            return description + (levelFlags.GetFlag(flagToCheck) ? ifTrue : ifFalse);
+        }
+    }
 }

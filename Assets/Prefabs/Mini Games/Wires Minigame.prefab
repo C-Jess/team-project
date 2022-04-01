@@ -2210,16 +2210,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 11400000, guid: 8ceaf06d465433f489b012a8048836ae, type: 2}
+        m_TargetAssemblyTypeName: LevelFlags, MOG_Project
+        m_MethodName: TriggerFlag
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Wires
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &5889361726402881669

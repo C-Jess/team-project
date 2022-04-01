@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eba8a0d59a34571468565ebe8ce551cd, type: 3}
-  m_Name: Item
+  m_Name: Electrical Box
   m_EditorClassIdentifier: 
-  type: 0
-  model: {fileID: 0}
+  type: 2
+  prefab: {fileID: 8928648692296384350, guid: b6607f907d482654aa909cf60eabaa93, type: 3}
   sprite: {fileID: 0}
-  description: 
-  isInventoryItem: 0
+  description: Just some cables that need to be put back. Seems a little familiar?
+  isInventoryItem: 1

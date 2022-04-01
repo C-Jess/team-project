@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class InspectionListener : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField, Tooltip("Filps active states like a NOT gate")]
+    private bool flip = false;
+
+    private void Start()
     {
         ChangeActive(ItemInspector.isActive);
         ItemInspector.inspectionEvent.AddListener(ChangeActive);
     }
 
-
-    void ChangeActive(bool active)
+    // KJ: Clean up listeners
+    private void OnDestroy()
     {
-        gameObject.SetActive(active);
+        ItemInspector.inspectionEvent.RemoveListener(ChangeActive);
+    }
+
+    private void ChangeActive(bool active)
+    {
+        gameObject.SetActive(flip ? !active : active);
     }
 }
