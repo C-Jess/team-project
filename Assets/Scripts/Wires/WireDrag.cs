@@ -8,7 +8,6 @@ public class WireDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private UILineRenderer line;
-    [SerializeField] private float adjustment = 0;
 
     RectTransform rectTransform;
     CanvasGroup canvasGroup;
@@ -29,8 +28,9 @@ public class WireDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnDrag(PointerEventData eventData)
     {
-        //TODO: FIX THIS "adjustment" i a quick fix to get the demo ready -KJ
-        rectTransform.anchoredPosition += eventData.delta / (canvas.scaleFactor + adjustment);
+        Vector2 position;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, eventData.position, canvas.worldCamera, out position);
+        rectTransform.position = canvas.transform.TransformPoint(position);
         line.ChangeEndPoint(rectTransform.anchoredPosition);
     }
 
@@ -44,7 +44,7 @@ public class WireDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         }
     }
 
-    public void AttachToEnd(Vector2 position)
+    public void AttachToEnd(Vector3 position)
     {
         // No point moving if done.
         complete = true;

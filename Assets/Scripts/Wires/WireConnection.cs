@@ -10,11 +10,11 @@ public class WireConnection : MonoBehaviour, IDropHandler
     
     RectTransform rectTransform;
     
-    public UnityEvent<Vector2> onDropEvent;
+    public UnityEvent<Vector3> onDropEvent;
 
     private void Start()
     {
-        if (onDropEvent == null) onDropEvent = new UnityEvent<Vector2>();
+        if (onDropEvent == null) onDropEvent = new UnityEvent<Vector3>();
         if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
     }
 

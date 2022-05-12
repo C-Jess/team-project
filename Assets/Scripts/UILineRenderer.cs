@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasRenderer))]
-public class UILineRenderer : Graphic
+public class UILineRenderer : MaskableGraphic
 {
     public float thinkness = 10f;
     public List<Vector2> points; // KJ: Extend class later?

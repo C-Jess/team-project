@@ -66,11 +66,11 @@ public class DrawLine : MonoBehaviour
 
     public void GetMInput(string InputM)
     {
-        m = float.Parse(InputM);
+        float.TryParse(InputM, out m);
     }
 
     public void GetCInput(string InputC)
     {
-        c = float.Parse(InputC);
+        float.TryParse(InputC, out c);
     }
 }

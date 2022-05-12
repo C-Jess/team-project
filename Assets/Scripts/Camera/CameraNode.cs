@@ -27,4 +27,20 @@ public class CameraNode : MonoBehaviour
     {
         locked = state;
     }
+
+    // KJ: Added Gizmo draw to help manage nodes
+    void OnDrawGizmos ()
+    {
+        if (nodeLeft != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, Vector3.Lerp(transform.position, nodeLeft.transform.position, 0.5f));
+        }
+
+        if (nodeRight != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, Vector3.Lerp(transform.position, nodeRight.transform.position, 0.5f));
+        }
+    }
 }

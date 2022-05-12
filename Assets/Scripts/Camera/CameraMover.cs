@@ -20,19 +20,19 @@ public class CameraMover : MonoBehaviour
 
     void LeftButtonClicked()
     {
-        if (node.GetLeft() != null & node.GetLeft() != node.GetLeft().IsLocked())
+        if (node.GetLeft() != null && node.GetLeft() != node.GetLeft().IsLocked())
         {
             node = node.GetLeft();
-            Debug.Log("leftButton");
+            //Debug.Log("leftButton");
         }
     }
 
     void RightButtonClicked()
     {
-        if (node.GetRight() != null & node.GetRight() != node.GetRight().IsLocked())
+        if (node.GetRight() != null && node.GetRight() != node.GetRight().IsLocked())
         {
             node = node.GetRight();
-            Debug.Log("leftButton");
+            //Debug.Log("rightButton");
         }
     }
 
@@ -44,5 +44,15 @@ public class CameraMover : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, node.transform.position, counter);
             if (transform.position == node.transform.position) counter = 0;
         }
+
+        UpdateUI();
+    }
+
+    // KJ: You could make the argument that this should be seperated out
+    //     but this is a speciality script.
+    private void UpdateUI()
+    {
+        leftButton.gameObject.SetActive(node.GetLeft() != null && !node.GetLeft().IsLocked());
+        rightButton.gameObject.SetActive(node.GetRight() != null && !node.GetRight().IsLocked());
     }
 }
