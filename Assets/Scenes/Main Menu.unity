@@ -447,7 +447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Math  Escape
+  m_text: Out of The Box
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4550086128534f84fbc2d11150b23634, type: 2}
   m_sharedMaterial: {fileID: 3780608488718291086, guid: 4550086128534f84fbc2d11150b23634, type: 2}
