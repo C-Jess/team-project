@@ -49,6 +49,7 @@ public class Ball : MonoBehaviour
 
         if(Input.GetMouseButton(0))
         {
+            // Code that draws the trajectory line
             endPosition = GetMousePosition();
             Vector2 velocity = (startPosition - endPosition) * force;
 
@@ -70,10 +71,8 @@ public class Ball : MonoBehaviour
             endPosition = GetMousePosition();
             Vector2 velocity = (startPosition - endPosition) * force;
 
-            //Vector2 power = startPosition - endPosition;
             physics.isKinematic = false;
 
-            //physics.AddForce((power * force), ForceMode2D.Force);
             physics.velocity = velocity;
         }
     }
@@ -98,6 +97,7 @@ public class Ball : MonoBehaviour
         if(transform.position.y < ballScorePosition)
         {
             Debug.Log("win the game"); // put something here to actually win
+            // All this below might not have to exist if it just exits the game anyway
             physics.isKinematic = true;
             transform.position = resetBallPosition;
             physics.velocity = Vector2.zero;
@@ -112,6 +112,7 @@ public class Ball : MonoBehaviour
 
     public Vector2[] Plot(Rigidbody2D rigidbody, Vector2 pos, Vector2 velocity, int steps)
     {
+        // Code that creates the points behind the trajectory line
         Vector2[] results = new Vector2[steps];
 
         float timestep = Time.fixedDeltaTime / Physics2D.velocityIterations;
