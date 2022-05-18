@@ -771,7 +771,7 @@ MonoBehaviour:
         m_MethodName: Inspect
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3a600603986eb491d9463fe68df94ca9, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 4e40e9f4be137cf4782faddd87d14490, type: 2}
           m_ObjectArgumentAssemblyTypeName: ItemObject, MOG_Project
           m_IntArgument: 0
           m_FloatArgument: 0

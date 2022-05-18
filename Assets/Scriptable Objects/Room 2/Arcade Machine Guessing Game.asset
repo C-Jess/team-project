@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba8a0d59a34571468565ebe8ce551cd, type: 3}
+  m_Name: Arcade Machine Guessing Game
+  m_EditorClassIdentifier: 
+  type: 2
+  prefab: {fileID: 2347906787172304605, guid: ef4b01a54e135e14fa1a8356b4b96bd1, type: 3}
+  sprite: {fileID: 0}
+  description: 'A old arcade machine. '
+  isInventoryItem: 1
+  levelFlags: {fileID: 11400000, guid: 3c458938ecc83154391fcc0f97046113, type: 2}
+  flagToCheck: Hammer Game Used
+  ifTrue: Who ever said hitting machines doesn't fix them?
+  ifFalse: Seems like it isn't powered yet? Must need to do something before it turns
+    on...

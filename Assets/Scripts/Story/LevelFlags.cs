@@ -11,6 +11,7 @@ public class LevelFlags : ScriptableObject
 
     private void OnEnable()
     {
+        if (Flags is null) return;
         foreach (FlagPair i in Flags)
         {
             i.state = false;
@@ -45,7 +46,16 @@ public class LevelFlags : ScriptableObject
         return false;
     }
 
-        public void TriggerFlag(string flag) => SetFlag(flag, true);
+    public void TriggerFlag(string flag) => SetFlag(flag, true);
+
+    [ContextMenu("Invoke current flags")]
+    private void InvokeCurrentFlags()
+    {
+        foreach (FlagPair i in Flags)
+        {
+            onFlagChange.Invoke(i.flag, i.state);
+        }
+    }
 }
 
 

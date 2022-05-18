@@ -6,19 +6,26 @@ using UnityEngine;
 
 public class Inventory : ScriptableObject
 {
-    public List<ItemObject> ItemList = new List<ItemObject>();
+    public ItemInspector itemInspector;
+    public List<ItemObject> itemList = new List<ItemObject>();
     
     public void AddItem(ItemObject item)
     {
-        ItemList.Add(item);
+        itemList.Add(item);
     }
 
     public void RemoveAt(int location)
     {
-        ItemList.RemoveAt(location);
+        itemList.RemoveAt(location);
+    }
+
+    public void Inspect(ItemObject item)
+    {
+        if (item is null) return;
+        if (itemInspector != null) itemInspector.Inspect(item);
     }
 
     private void OnEnable() {
-        ItemList.Clear();
+        itemList.Clear();
     }
 }

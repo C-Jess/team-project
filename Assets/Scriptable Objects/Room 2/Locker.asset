@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba8a0d59a34571468565ebe8ce551cd, type: 3}
+  m_Name: Locker
+  m_EditorClassIdentifier: 
+  type: 2
+  prefab: {fileID: 1247885335655703311, guid: a70df3844b3526b45922fdcd09521745, type: 3}
+  sprite: {fileID: 0}
+  description: A more high tech locker? Kinda weird, must have something good inside.
+  isInventoryItem: 1
+  levelFlags: {fileID: 0}
+  flagToCheck: 
+  ifTrue: 
+  ifFalse: 

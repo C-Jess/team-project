@@ -21,11 +21,11 @@ public class InventorySlot : MonoBehaviour
     public void Update()
     {
         // slot code here like remove item or get new item
-        int length = inv.ItemList.Count;
+        int length = inv.itemList.Count;
         
         if(slot + 1 <= length)
         {
-            item = inv.ItemList[slot];
+            item = inv.itemList[slot];
             slotImage.sprite = item.sprite;
             slotImage.enabled = true;
         }
@@ -33,5 +33,11 @@ public class InventorySlot : MonoBehaviour
         {
             slotImage.enabled = false;
         }
+    }
+
+    public void InspectSelf()
+    {
+        if (item is null) return;
+        if (inv != null) inv.Inspect(item);
     }
 }

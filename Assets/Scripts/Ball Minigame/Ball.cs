@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Ball : MonoBehaviour
 {
+    public UnityEvent onComplete;
+
     public float force = 100f;
+    public int steps = 700;
 
     private Vector2 resetBallPosition;
     
@@ -28,6 +32,8 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (onComplete == null) onComplete = new UnityEvent();
+
         physics.isKinematic = true;
         resetBallPosition = transform.position;
     }
@@ -53,7 +59,7 @@ public class Ball : MonoBehaviour
             endPosition = GetMousePosition();
             Vector2 velocity = (startPosition - endPosition) * force;
 
-            Vector2[] trajectory = Plot(physics, (Vector2)transform.position, velocity, 700);
+            Vector2[] trajectory = Plot(physics, (Vector2)transform.position, velocity, steps);
             
             lineTrajectory.positionCount = trajectory.Length;
 
@@ -96,6 +102,7 @@ public class Ball : MonoBehaviour
     {
         if(transform.position.y < ballScorePosition)
         {
+            onComplete.Invoke();
             Debug.Log("win the game"); // put something here to actually win
             // All this below might not have to exist if it just exits the game anyway
             physics.isKinematic = true;

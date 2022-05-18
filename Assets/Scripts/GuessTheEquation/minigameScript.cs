@@ -2,36 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class minigameScript : MonoBehaviour
 {
+    public UnityEvent onComplete;
+
     float m;
     float c;
 
     // Difficulty accessor.
-    bool isHard;
+    bool isHard = true;
 
     [SerializeField] TMP_InputField xInput;
     [SerializeField] TMP_InputField mInput;
     [SerializeField] TMP_InputField cInput;
     [SerializeField] TMP_Text yValue;
 
-    // Start is called before the first frame update
+    [SerializeField] private TMP_Text outputMessage;
+    private int attempts = 0;
+
     void Start()
     {
         // Answers
-        m = Random.Range(-10, 10);
-        c = Random.Range(-10, 10);
+        SetDifficulty(true);
 
-        Debug.Log(m.ToString());
-        Debug.Log(c.ToString());
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (onComplete == null) onComplete = new UnityEvent();
     }
 
     public void GetX()
@@ -41,15 +37,24 @@ public class minigameScript : MonoBehaviour
 
     public void GetValues()
     {
+        attempts++;
+        string result = $"Attempt {attempts}: Answer is ";
 
-        if (float.Parse((mInput.text)) == m && float.Parse(cInput.text) == c)
+        float.TryParse(mInput.text, out float mOut);
+        float.TryParse(cInput.text, out float cOut);
+
+        if (mOut == m && cOut == c)
         {
             Debug.Log("Correct");
+            result += "Correct";
+            onComplete.Invoke();
         }
         else
         {
             Debug.Log("Incorrect");
+            result += "Incorrect";
         }
+        if (outputMessage != null) outputMessage.text = result;
     }
 
     public void CalculateY(string x)
@@ -64,7 +69,8 @@ public class minigameScript : MonoBehaviour
         }  
     }
 
-    
+    // KJ: Code never used?
+    /*
     public void QuadraticCalculateY(string x, int pow  = 1)
     {  
         float test;
@@ -76,21 +82,26 @@ public class minigameScript : MonoBehaviour
             yValue.text = result.ToString();
         }  
     }
+    */
 
     public void SetDifficulty(bool b)
     {
         isHard = b;
 
-        //Update game values for difficulty.
+        // Update game values for difficulty.
         if (isHard)
+        {
+            // KJ: Random needs floats otherwise you only get ints outputs
+            //     Also rounding due to it being super hard
+            m = (float)System.Math.Round(Random.Range(-10f, 10f), 2);
+            c = (float)System.Math.Round(Random.Range(-10f, 10f), 2);
+        }
+        else
         {
             m = Random.Range(-10, 10);
             c = Random.Range(-10, 10);
         }
-        else
-        {
-            m = (int)Random.Range(-10, 10);
-            c = (int)Random.Range(-10, 10);
-        }
+
+        Debug.Log($"Guessing Game Cheats: m = {m}, c = {c}");
     }
 }

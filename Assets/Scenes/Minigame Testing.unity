@@ -330,6 +330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GuessTheEquation
       objectReference: {fileID: 0}
+    - target: {fileID: 3759201777592420906, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4551013018324939156, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.5
@@ -378,6 +382,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5688909555466463152, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: outputMessage
+      value: 
+      objectReference: {fileID: 1717582680}
+    - target: {fileID: 5688909555466463152, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688909555466463152, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688909555466463152, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c458938ecc83154391fcc0f97046113, type: 2}
+    - target: {fileID: 5688909555466463152, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688909555466463152, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerFlag
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688909555466463152, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelFlags, MOG_Project
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688909555466463152, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Guessing Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688909555466463152, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8098115485207685426, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
       propertyPath: m_ContentType
       value: 3
@@ -396,6 +436,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+--- !u!114 &1717582680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 648314954455318912, guid: 889f01a2e20e94f409d979683568f40c, type: 3}
+  m_PrefabInstance: {fileID: 1221311908}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1752636952
 GameObject:
   m_ObjectHideFlags: 0

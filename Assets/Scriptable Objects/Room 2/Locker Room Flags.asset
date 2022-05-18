@@ -10,15 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2cd5f8955692a940b146af21c0337b0, type: 3}
-  m_Name: Basement Flags
+  m_Name: Locker Room Flags
   m_EditorClassIdentifier: 
   onFlagChange:
     m_PersistentCalls:
       m_Calls: []
   Flags:
-  - flag: Combo Lock
+  - flag: Screw Driver
     state: 0
-  - flag: Wires
+  - flag: Hammer
     state: 0
-  - flag: Battleships
+  - flag: Hammer Game Used
     state: 0
+  - flag: Rigged
+    state: 0
+  - flag: Hammer Game Used And Rigged
+    state: 0
+  - flag: Guessing Game
+    state: 1

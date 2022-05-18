@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba8a0d59a34571468565ebe8ce551cd, type: 3}
+  m_Name: Hammer Game
+  m_EditorClassIdentifier: 
+  type: 2
+  prefab: {fileID: 2347906787172304605, guid: d0027056b1b02524f9447570d2325605, type: 3}
+  sprite: {fileID: 0}
+  description: 'Looks like of of those carnival games, weird how it''s wired up the
+    the archade machine. '
+  isInventoryItem: 1
+  levelFlags: {fileID: 11400000, guid: 3c458938ecc83154391fcc0f97046113, type: 2}
+  flagToCheck: Hammer
+  ifTrue: Glad i found the hammer, can now actually try this thing!
+  ifFalse: Huh, it's missing the hammer, can't use it without that.
