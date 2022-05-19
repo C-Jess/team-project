@@ -2,26 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
     public UnityEvent onComplete;
 
-    public float force = 100f;
-    public int steps = 700;
+    [SerializeField] float force = 100f;
+    [SerializeField] int steps = 700;
 
     private Vector2 resetBallPosition;
-    
-    private Vector2 startPosition;
-    private Vector2 endPosition;
-
-    private Vector3 mousePos;
 
     private float ballScorePosition;
 
     private Rigidbody2D physics;
 
     private LineRenderer lineTrajectory;
+
+    private Vector2 userForceInput;
+
+    public Button fireButton;
+    public InputField xValue, yValue;
     
     void Awake() 
     {
@@ -36,31 +37,41 @@ public class Ball : MonoBehaviour
 
         physics.isKinematic = true;
         resetBallPosition = transform.position;
+        fireButton.onClick.AddListener(FireButtonClicked);
     }
 
-    // Update is called once per frame
-    void Update()
-    {     
-        lineTrajectory.textureMode = LineTextureMode.RepeatPerSegment;
-        lineTrajectory.material.SetTextureScale("_MainTex", new Vector2(0.1f , 1));
-
-        mousePos = Input.mousePosition;
-        mousePos.z = 10;
-
-        if(Input.GetMouseButtonDown(0))
+    void FireButtonClicked()
+    {
+        if(physics.isKinematic == true)
         {
-            startPosition = GetMousePosition();
-            
+            Vector2 velocity = (userForceInput) * force;
+
+            physics.isKinematic = false;
+            physics.velocity = velocity;
         }
+    }
 
-        if(Input.GetMouseButton(0))
+    public void ValueChangeCheck()
+    {
+        if(physics.isKinematic == true)
         {
+            CreateTrajectoryLine();
+        }
+    }
+
+    void CreateTrajectoryLine()
+    {
+        float.TryParse(xValue.text, out float x);
+            float.TryParse(yValue.text, out float y);
+
+            userForceInput.x = x/10;
+            userForceInput.y = y/10;
+
             // Code that draws the trajectory line
-            endPosition = GetMousePosition();
-            Vector2 velocity = (startPosition - endPosition) * force;
+            Vector2 velocity = (userForceInput) * force;
 
             Vector2[] trajectory = Plot(physics, (Vector2)transform.position, velocity, steps);
-            
+                
             lineTrajectory.positionCount = trajectory.Length;
 
             Vector3[] positions = new Vector3[trajectory.Length];
@@ -69,18 +80,6 @@ public class Ball : MonoBehaviour
                 positions[i] = trajectory[i];
             }
             lineTrajectory.SetPositions(positions);
-        }
-
-        if(Input.GetMouseButtonUp(0))
-        {
-            lineTrajectory.positionCount = 0;
-            endPosition = GetMousePosition();
-            Vector2 velocity = (startPosition - endPosition) * force;
-
-            physics.isKinematic = false;
-
-            physics.velocity = velocity;
-        }
     }
 
     void OnCollisionEnter2D(Collision2D other) 
@@ -91,6 +90,7 @@ public class Ball : MonoBehaviour
         transform.position = resetBallPosition;
         physics.velocity = Vector2.zero;
         physics.angularVelocity = 0f;
+        CreateTrajectoryLine();
     }
 
     void OnTriggerEnter2D(Collider2D other) 
@@ -103,18 +103,15 @@ public class Ball : MonoBehaviour
         if(transform.position.y < ballScorePosition)
         {
             onComplete.Invoke();
-            Debug.Log("win the game"); // put something here to actually win
-            // All this below might not have to exist if it just exits the game anyway
             physics.isKinematic = true;
             transform.position = resetBallPosition;
             physics.velocity = Vector2.zero;
             physics.angularVelocity = 0f;
+            lineTrajectory.positionCount = 0;
+            fireButton.enabled = false;
+            xValue.enabled = false;
+            yValue.enabled = false;
         }
-    }
-
-    private Vector2 GetMousePosition()
-    {
-        return Camera.main.ScreenToWorldPoint(mousePos);
     }
 
     public Vector2[] Plot(Rigidbody2D rigidbody, Vector2 pos, Vector2 velocity, int steps)
