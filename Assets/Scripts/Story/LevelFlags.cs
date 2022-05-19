@@ -48,6 +48,10 @@ public class LevelFlags : ScriptableObject
 
     public void TriggerFlag(string flag) => SetFlag(flag, true);
 
+    public void DisableFlag(string flag) => SetFlag(flag, false);
+
+    public void ToggleFlag(string flag) => SetFlag(flag, !GetFlag(flag));
+
     [ContextMenu("Invoke current flags")]
     private void InvokeCurrentFlags()
     {
