@@ -49,10 +49,11 @@ public class Ship : MonoBehaviour
         {
             image.color = Color.yellow;
         }
-        else
-        {
-            image.color = Color.grey;
-        }
+        // KJ: Why is this here? It Just reveals the ships!
+        //else
+        //{
+        //    image.color = Color.grey;
+        //}
     }
 
     private bool CheckIntercept (float m, float c)
