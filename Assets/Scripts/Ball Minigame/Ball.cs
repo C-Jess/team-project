@@ -23,6 +23,9 @@ public class Ball : MonoBehaviour
 
     public Button fireButton;
     public InputField xValue, yValue;
+
+    private float x;
+    private float y;
     
     void Awake() 
     {
@@ -38,6 +41,9 @@ public class Ball : MonoBehaviour
         physics.isKinematic = true;
         resetBallPosition = transform.position;
         fireButton.onClick.AddListener(FireButtonClicked);
+        fireButton.enabled = true;
+        xValue.enabled = true;
+        yValue.enabled = true;
     }
 
     void FireButtonClicked()
@@ -48,6 +54,9 @@ public class Ball : MonoBehaviour
 
             physics.isKinematic = false;
             physics.velocity = velocity;
+
+            xValue.text = x.ToString();
+            yValue.text = y.ToString();
         }
     }
 
@@ -61,25 +70,28 @@ public class Ball : MonoBehaviour
 
     void CreateTrajectoryLine()
     {
-        float.TryParse(xValue.text, out float x);
-            float.TryParse(yValue.text, out float y);
+        float.TryParse(xValue.text, out x);
+        float.TryParse(yValue.text, out y);
 
-            userForceInput.x = x/10;
-            userForceInput.y = y/10;
+        x = Mathf.Clamp(x, -99f, 99f);
+        y = Mathf.Clamp(y, -99f, 99f);
 
-            // Code that draws the trajectory line
-            Vector2 velocity = (userForceInput) * force;
+        userForceInput.x = x/10;
+        userForceInput.y = y/10;
 
-            Vector2[] trajectory = Plot(physics, (Vector2)transform.position, velocity, steps);
+        // Code that draws the trajectory line
+        Vector2 velocity = (userForceInput) * force;
+
+        Vector2[] trajectory = Plot(physics, (Vector2)transform.position, velocity, steps);
                 
-            lineTrajectory.positionCount = trajectory.Length;
+        lineTrajectory.positionCount = trajectory.Length;
 
-            Vector3[] positions = new Vector3[trajectory.Length];
-            for (int i = 0; i <trajectory.Length; i++)
-            {
-                positions[i] = trajectory[i];
-            }
-            lineTrajectory.SetPositions(positions);
+        Vector3[] positions = new Vector3[trajectory.Length];
+        for (int i = 0; i <trajectory.Length; i++)
+        {
+            positions[i] = trajectory[i];
+        }
+        lineTrajectory.SetPositions(positions);
     }
 
     void OnCollisionEnter2D(Collision2D other) 
