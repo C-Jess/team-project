@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Win.unity
     guid: a770c9561ee1e7c43a01fca1592a90e9
   - enabled: 0
-    path: Assets/Scenes/Prototype.unity
+    path: Assets/Scenes/Dev Levels/Prototype.unity
     guid: 1d4ef82fadc6d7d478fff1045ff99305
   m_configObjects: {}
