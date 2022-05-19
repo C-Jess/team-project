@@ -741,7 +741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Currenty Difficulty: EASY'
+  m_text: 'Current Difficulty: EASY'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4550086128534f84fbc2d11150b23634, type: 2}
   m_sharedMaterial: {fileID: 3780608488718291086, guid: 4550086128534f84fbc2d11150b23634, type: 2}
@@ -1624,7 +1624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Currenty Difficulty: HARD'
+  m_text: 'Current Difficulty: HARD'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4550086128534f84fbc2d11150b23634, type: 2}
   m_sharedMaterial: {fileID: 3780608488718291086, guid: 4550086128534f84fbc2d11150b23634, type: 2}
