@@ -17,8 +17,8 @@ MonoBehaviour:
       m_Calls: []
   Flags:
   - flag: Combo Lock
-    state: 0
+    state: 1
   - flag: Wires
-    state: 0
+    state: 1
   - flag: Battleships
-    state: 0
+    state: 1
