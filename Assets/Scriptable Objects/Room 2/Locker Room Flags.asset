@@ -27,4 +27,4 @@ MonoBehaviour:
   - flag: Hammer Game Used And Rigged
     state: 0
   - flag: Guessing Game
-    state: 1
+    state: 0

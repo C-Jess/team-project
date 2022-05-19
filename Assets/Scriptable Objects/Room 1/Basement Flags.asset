@@ -21,4 +21,4 @@ MonoBehaviour:
   - flag: Wires
     state: 0
   - flag: Battleships
-    state: 1
+    state: 0
